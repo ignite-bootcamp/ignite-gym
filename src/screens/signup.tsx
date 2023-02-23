@@ -10,12 +10,20 @@ import {
 
 import backgroundImg from '@assets/background.png'
 import LogoSvg from '@assets/logo.svg'
+import { useNavigation } from '@react-navigation/native'
 
 export function SignUp() {
+  const navigation = useNavigation()
+
+  function handleGoBack() {
+    navigation.goBack()
+  }
+
   return (
     <VStack px={10} flex={1}>
       <Image
         source={backgroundImg}
+        defaultSource={backgroundImg}
         alt=""
         resizeMode="contain"
         position="absolute"
@@ -42,7 +50,7 @@ export function SignUp() {
         <Input mb={4} placeholder="Senha" secureTextEntry />
         <Button>Criar e acessar</Button>
       </Center>
-      <Button variant="outline" mt={24}>
+      <Button onPress={handleGoBack} variant="outline" mt={24}>
         Voltar para o login
       </Button>
     </VStack>
