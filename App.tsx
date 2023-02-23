@@ -1,5 +1,4 @@
 /* eslint-disable camelcase */
-import 'react-native-gesture-handler'
 import { useFonts } from 'expo-font'
 import { Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto'
 import { StatusBar } from 'react-native'
