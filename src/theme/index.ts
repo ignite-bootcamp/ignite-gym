@@ -53,11 +53,13 @@ export const THEME = extendTheme({
     },
   },
   fontConfig: {
-    400: {
-      normal: 'Roboto_400Regular',
-    },
-    700: {
-      normal: 'Roboto_700Bold',
+    Roboto: {
+      400: {
+        normal: 'Roboto_400Regular',
+      },
+      700: {
+        normal: 'Roboto_700Bold',
+      },
     },
   },
   fonts: {
