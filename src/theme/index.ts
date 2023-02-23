@@ -1,6 +1,25 @@
 import { extendTheme } from 'native-base'
 
 export const THEME = extendTheme({
+  components: {
+    Input: {
+      defaultProps: {
+        bg: 'gray.700',
+        h: 14,
+        px: 4,
+        fontSize: 'md',
+        borderWidth: 0,
+        color: 'white',
+        mb: 4,
+        placeholderTextColor: 'gray.300',
+        _focus: {
+          bg: 'gray.700',
+          borderWidth: 1,
+          borderColor: 'green.500',
+        },
+      },
+    },
+  },
   fontConfig: {
     400: {
       normal: 'Roboto_400Regular',
