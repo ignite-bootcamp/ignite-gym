@@ -19,18 +19,35 @@ export const THEME = extendTheme({
       },
     },
     Button: {
-      defaultProps: {
+      baseStyle: {
         w: 'full',
         h: 14,
-        bg: 'green.700',
         rounded: 'sm',
-        _pressed: {
-          bg: 'green.500',
-        },
         _text: {
-          color: 'white',
           fontWeight: 700,
-          fontSize: 'sm',
+        },
+      },
+      variants: {
+        solid: {
+          bg: 'green.700',
+          _pressed: {
+            bg: 'green.500',
+          },
+          _text: {
+            color: 'white',
+            fontSize: 'sm',
+          },
+        },
+        outline: {
+          bg: 'transparent',
+          borderWidth: 1,
+          borderColor: 'green.500',
+          _pressed: {
+            bg: 'gray.500',
+          },
+          _text: {
+            color: 'green.500',
+          },
         },
       },
     },

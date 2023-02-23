@@ -35,6 +35,9 @@ export function SignIn() {
       <Input mb={4} placeholder="E-mail" keyboardType="email-address" />
       <Input mb={4} placeholder="Senha" secureTextEntry />
       <Button>Acessar</Button>
+      <Button variant="outline" mt={4}>
+        Criar conta
+      </Button>
     </VStack>
   )
 }
