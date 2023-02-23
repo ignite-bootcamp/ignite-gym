@@ -13,7 +13,7 @@ import LogoSvg from '@assets/logo.svg'
 
 export function SignUp() {
   return (
-    <VStack px={10} flex={1} bg="gray.700">
+    <VStack px={10} flex={1}>
       <Image
         source={backgroundImg}
         alt=""
