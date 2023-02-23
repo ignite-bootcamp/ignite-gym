@@ -11,7 +11,7 @@ import {
 import backgroundImg from '@assets/background.png'
 import LogoSvg from '@assets/logo.svg'
 
-export function SignIn() {
+export function SignUp() {
   return (
     <VStack px={10} flex={1} bg="gray.700">
       <Image
@@ -28,20 +28,22 @@ export function SignIn() {
       </Center>
       <Center>
         <Heading color="gray.100" mb={6} fontSize="xl">
-          Acesse sua conta
+          Crie sua conta
         </Heading>
 
-        <Input mb={4} placeholder="E-mail" keyboardType="email-address" />
+        <Input mb={4} placeholder="Nome" />
+
+        <Input
+          placeholder="E-mail"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          mb={4}
+        />
         <Input mb={4} placeholder="Senha" secureTextEntry />
-        <Button>Acessar</Button>
+        <Button>Criar e acessar</Button>
       </Center>
-      <Center mt={24}>
-        <Text color="gray.100" fontSize="sm" mb={3}>
-          Ainda não tem acesso ?
-        </Text>
-      </Center>
-      <Button variant="outline" mt={4}>
-        Criar conta
+      <Button variant="outline" mt={24}>
+        Voltar para o login
       </Button>
     </VStack>
   )
