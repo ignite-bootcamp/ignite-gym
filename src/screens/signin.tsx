@@ -1,4 +1,12 @@
-import { Center, Heading, Image, Input, Text, VStack } from 'native-base'
+import {
+  Button,
+  Center,
+  Heading,
+  Image,
+  Input,
+  Text,
+  VStack,
+} from 'native-base'
 
 import backgroundImg from '@assets/background.png'
 import LogoSvg from '@assets/logo.svg'
@@ -24,8 +32,9 @@ export function SignIn() {
         </Heading>
       </Center>
 
-      <Input placeholder="E-mail" keyboardType="email-address" />
-      <Input placeholder="Senha" secureTextEntry />
+      <Input mb={4} placeholder="E-mail" keyboardType="email-address" />
+      <Input mb={4} placeholder="Senha" secureTextEntry />
+      <Button>Acessar</Button>
     </VStack>
   )
 }

@@ -10,12 +10,27 @@ export const THEME = extendTheme({
         fontSize: 'md',
         borderWidth: 0,
         color: 'white',
-        mb: 4,
         placeholderTextColor: 'gray.300',
         _focus: {
           bg: 'gray.700',
           borderWidth: 1,
           borderColor: 'green.500',
+        },
+      },
+    },
+    Button: {
+      defaultProps: {
+        w: 'full',
+        h: 14,
+        bg: 'green.700',
+        rounded: 'sm',
+        _pressed: {
+          bg: 'green.500',
+        },
+        _text: {
+          color: 'white',
+          fontWeight: 700,
+          fontSize: 'sm',
         },
       },
     },
