@@ -1,4 +1,5 @@
-import { Heading, HStack, VStack, Text, Image } from 'native-base'
+import { Heading, HStack, VStack, Text, Image, IconButton } from 'native-base'
+import { MaterialIcons } from '@expo/vector-icons'
 
 export function HomeHeader() {
   return (
@@ -9,7 +10,7 @@ export function HomeHeader() {
         alt="Imagem do usuário"
         mr={4}
       />
-      <VStack>
+      <VStack flex={1}>
         <Text color="gray.100" fontSize="md">
           Olá
         </Text>
@@ -18,6 +19,18 @@ export function HomeHeader() {
           Rodrigo
         </Heading>
       </VStack>
+
+      <IconButton
+        _icon={{
+          as: MaterialIcons,
+          name: 'logout',
+          color: 'gray.200',
+          size: 7,
+        }}
+        _pressed={{
+          bg: 'gray.100:alpha.10',
+        }}
+      />
     </HStack>
   )
 }
