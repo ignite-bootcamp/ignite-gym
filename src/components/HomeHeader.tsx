@@ -1,10 +1,11 @@
-import { Heading, HStack, VStack, Text, Image, IconButton } from 'native-base'
+import { Heading, HStack, VStack, Text, IconButton } from 'native-base'
 import { MaterialIcons } from '@expo/vector-icons'
+import { UserPhoto } from './UserPhoto'
 
 export function HomeHeader() {
   return (
     <HStack bg="gray.600" pt={16} pb={5} px={8} alignItems="center">
-      <Image
+      <UserPhoto
         source={{ uri: 'https://github.com/guivictorr.png' }}
         boxSize={16}
         alt="Imagem do usuário"

@@ -3,7 +3,6 @@ import {
   Button,
   Center,
   Heading,
-  Image,
   Input,
   Skeleton,
   Stack,
@@ -16,6 +15,7 @@ import * as ImagePicker from 'expo-image-picker'
 import * as FileSystem from 'expo-file-system'
 
 import { ScreenHeader } from '@components/ScreenHeader'
+import { UserPhoto } from '@components/UserPhoto'
 
 const PIC_MEGABYTES_LIMIT = 5
 
@@ -84,7 +84,7 @@ export function Profile() {
               endColor="gray.400"
             />
           ) : (
-            <Image
+            <UserPhoto
               source={{ uri: userPhoto }}
               alt="Foto de usuário"
               boxSize={33}
