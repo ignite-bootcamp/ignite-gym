@@ -15,13 +15,27 @@ import { useNavigation } from '@react-navigation/native'
 import { Controller, useForm } from 'react-hook-form'
 import { ScrollView } from 'react-native'
 
+type FormDataProps = {
+  name: string
+  email: string
+  password: string
+  password_confirm: string
+}
+
 export function SignUp() {
-  const { control } = useForm()
+  const { control, handleSubmit } = useForm<FormDataProps>()
   const navigation = useNavigation()
 
   function handleGoBack() {
     navigation.goBack()
   }
+
+  function handleSignUp({
+    name,
+    email,
+    password,
+    password_confirm,
+  }: FormDataProps) {}
 
   return (
     <ScrollView
@@ -92,11 +106,15 @@ export function SignUp() {
                   secureTextEntry
                   onChangeText={onChange}
                   value={value}
+                  onSubmitEditing={handleSubmit(handleSignUp)}
+                  returnKeyType="send"
                 />
               )}
             />
 
-            <Button>Criar e acessar</Button>
+            <Button onPress={handleSubmit(handleSignUp)}>
+              Criar e acessar
+            </Button>
           </Stack>
         </Center>
         <Button onPress={handleGoBack} variant="outline" mt={24}>
