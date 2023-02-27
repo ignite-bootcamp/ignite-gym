@@ -2,13 +2,6 @@ import { extendTheme } from 'native-base'
 
 export const THEME = extendTheme({
   components: {
-    Image: {
-      baseStyle: {
-        borderRadius: 'full',
-        borderWidth: 2,
-        borderColor: 'gray.400',
-      },
-    },
     Input: {
       defaultProps: {
         bg: 'gray.700',
