@@ -3,17 +3,17 @@ import {
   Center,
   Heading,
   Image,
-  Input,
   Stack,
   Text,
   VStack,
 } from 'native-base'
-
-import backgroundImg from '@assets/background.png'
-import LogoSvg from '@assets/logo.svg'
 import { useNavigation } from '@react-navigation/native'
 import { Controller, useForm } from 'react-hook-form'
 import { ScrollView } from 'react-native'
+
+import { Input } from '@components/Input'
+import backgroundImg from '@assets/background.png'
+import LogoSvg from '@assets/logo.svg'
 
 type FormDataProps = {
   name: string
@@ -69,6 +69,7 @@ export function SignUp() {
                   placeholder="Nome"
                   onChangeText={onChange}
                   value={value}
+                  errorMessage="jorge"
                 />
               )}
             />
