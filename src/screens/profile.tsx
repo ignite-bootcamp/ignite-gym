@@ -16,9 +16,30 @@ import { ScreenHeader } from '@components/ScreenHeader'
 
 export function Profile() {
   const [photoIsLoading, setPhotoIsLoading] = useState(false)
+  const [userPhoto, setUserPhoto] = useState(
+    'https://github.com/guivictorr.png',
+  )
 
   async function handleUserPhotoSelected() {
-    await ImagePicker.launchImageLibraryAsync()
+    setPhotoIsLoading(true)
+    try {
+      const selectedPhoto = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        quality: 1,
+        aspect: [4, 4],
+        allowsEditing: true,
+      })
+
+      if (selectedPhoto.canceled) {
+        return
+      }
+
+      setUserPhoto(selectedPhoto.assets[0].uri)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setPhotoIsLoading(false)
+    }
   }
 
   return (
@@ -36,7 +57,7 @@ export function Profile() {
             />
           ) : (
             <Image
-              source={{ uri: 'https://github.com/guivictorr.png' }}
+              source={{ uri: userPhoto }}
               alt="Foto de usuário"
               boxSize={33}
             />
