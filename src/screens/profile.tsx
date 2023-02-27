@@ -10,9 +10,15 @@ import {
   Text,
   VStack,
 } from 'native-base'
-import { ScrollView, TouchableOpacity } from 'react-native'
+import { Alert, ScrollView, TouchableOpacity } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
+import * as FileSystem from 'expo-file-system'
+
 import { ScreenHeader } from '@components/ScreenHeader'
+
+function convertBytesToMegabytes(bytes) {
+  return bytes / 1024 / 1024
+}
 
 export function Profile() {
   const [photoIsLoading, setPhotoIsLoading] = useState(false)
@@ -34,7 +40,17 @@ export function Profile() {
         return
       }
 
-      setUserPhoto(selectedPhoto.assets[0].uri)
+      const uri = selectedPhoto.assets[0].uri
+
+      if (uri) {
+        const photoInfo = await FileSystem.getInfoAsync(uri)
+
+        if (photoInfo.size && convertBytesToMegabytes(photoInfo.size) > 5) {
+          return Alert.alert('A imagem ultrapassou o limite de 5MB')
+        }
+
+        setUserPhoto(selectedPhoto.assets[0].uri)
+      }
     } catch (error) {
       console.log(error)
     } finally {
