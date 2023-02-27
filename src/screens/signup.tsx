@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import {
   Button,
   Center,
@@ -10,20 +11,50 @@ import {
 import { useNavigation } from '@react-navigation/native'
 import { Controller, useForm } from 'react-hook-form'
 import { ScrollView } from 'react-native'
+import * as z from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 import { Input } from '@components/Input'
 import backgroundImg from '@assets/background.png'
 import LogoSvg from '@assets/logo.svg'
 
-type FormDataProps = {
-  name: string
-  email: string
-  password: string
-  password_confirm: string
-}
+const signUpSchema = z
+  .object({
+    name: z.string({
+      required_error: 'Informe o nome',
+    }),
+    email: z
+      .string({
+        required_error: 'Informe o email',
+      })
+      .email({ message: 'Email inválido' }),
+    password: z.string({
+      required_error: 'A senha deve ter pelo menos 6 caracteres',
+    }),
+    password_confirm: z.string({
+      required_error: 'A senha deve ter pelo menos 6 caracteres',
+    }),
+  })
+  .superRefine(({ password, password_confirm }, ctx) => {
+    if (password_confirm !== password) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'A confirmação de senha não confere',
+        path: ['password_confirm'],
+      })
+    }
+  })
+
+type FormDataProps = z.infer<typeof signUpSchema>
 
 export function SignUp() {
-  const { control, handleSubmit } = useForm<FormDataProps>()
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormDataProps>({
+    resolver: zodResolver(signUpSchema),
+  })
   const navigation = useNavigation()
 
   function handleGoBack() {
@@ -69,7 +100,7 @@ export function SignUp() {
                   placeholder="Nome"
                   onChangeText={onChange}
                   value={value}
-                  errorMessage="jorge"
+                  errorMessage={errors.name?.message}
                 />
               )}
             />
@@ -83,6 +114,7 @@ export function SignUp() {
                   autoCapitalize="none"
                   onChangeText={onChange}
                   value={value}
+                  errorMessage={errors.email?.message}
                 />
               )}
             />
@@ -95,6 +127,7 @@ export function SignUp() {
                   secureTextEntry
                   onChangeText={onChange}
                   value={value}
+                  errorMessage={errors.password?.message}
                 />
               )}
             />
@@ -109,6 +142,7 @@ export function SignUp() {
                   value={value}
                   onSubmitEditing={handleSubmit(handleSignUp)}
                   returnKeyType="send"
+                  errorMessage={errors.password_confirm?.message}
                 />
               )}
             />
