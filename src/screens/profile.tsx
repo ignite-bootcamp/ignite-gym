@@ -1,4 +1,4 @@
-import { ScreenHeader } from '@components/ScreenHeader'
+import { useState } from 'react'
 import {
   Button,
   Center,
@@ -10,11 +10,17 @@ import {
   Text,
   VStack,
 } from 'native-base'
-import { useState } from 'react'
 import { ScrollView, TouchableOpacity } from 'react-native'
+import * as ImagePicker from 'expo-image-picker'
+import { ScreenHeader } from '@components/ScreenHeader'
 
 export function Profile() {
   const [photoIsLoading, setPhotoIsLoading] = useState(false)
+
+  async function handleUserPhotoSelected() {
+    await ImagePicker.launchImageLibraryAsync()
+  }
+
   return (
     <VStack flex={1}>
       <ScreenHeader title="Perfil" />
@@ -36,7 +42,7 @@ export function Profile() {
             />
           )}
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleUserPhotoSelected}>
             <Text
               color="green.500"
               fontWeight="bold"
