@@ -1,5 +1,12 @@
 <h1 align='center'>Ignite Gym</h1>
 
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/55333929/221715966-ff4a1897-92f1-4d7a-b676-93dfd62ad13f.png" width="250"/>
+<img src="https://user-images.githubusercontent.com/55333929/221716003-c515eb06-07c2-4c6a-be0c-597d33fb6727.png" width="250"/>
+<img src="https://user-images.githubusercontent.com/55333929/221715993-ee45461c-00fb-410c-a70a-738eb3bd5234.png" width="250"/>
+</div>
+
 ## 💄 Layout
 - [Layout no Figma](https://www.figma.com/file/U1OkM4TQybhZKZ5PJyhuJn/Ignite-Gym-(Community)?node-id=37%3A6&t=OpuQuLnLILv4jJl8-1)
 
