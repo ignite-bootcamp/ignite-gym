@@ -8,15 +8,18 @@ import {
   Skeleton,
   Stack,
   Text,
+  useToast,
   VStack,
 } from 'native-base'
-import { Alert, ScrollView, TouchableOpacity } from 'react-native'
+import { ScrollView, TouchableOpacity } from 'react-native'
 import * as ImagePicker from 'expo-image-picker'
 import * as FileSystem from 'expo-file-system'
 
 import { ScreenHeader } from '@components/ScreenHeader'
 
-function convertBytesToMegabytes(bytes) {
+const PIC_MEGABYTES_LIMIT = 5
+
+function convertBytesToMegabytes(bytes: number) {
   return bytes / 1024 / 1024
 }
 
@@ -25,6 +28,8 @@ export function Profile() {
   const [userPhoto, setUserPhoto] = useState(
     'https://github.com/guivictorr.png',
   )
+
+  const toast = useToast()
 
   async function handleUserPhotoSelected() {
     setPhotoIsLoading(true)
@@ -45,8 +50,15 @@ export function Profile() {
       if (uri) {
         const photoInfo = await FileSystem.getInfoAsync(uri)
 
-        if (photoInfo.size && convertBytesToMegabytes(photoInfo.size) > 5) {
-          return Alert.alert('A imagem ultrapassou o limite de 5MB')
+        if (
+          photoInfo.size &&
+          convertBytesToMegabytes(photoInfo.size) > PIC_MEGABYTES_LIMIT
+        ) {
+          return toast.show({
+            title: `Essa imagem é muito grande. Escolhe uma até ${PIC_MEGABYTES_LIMIT}MB`,
+            placement: 'top',
+            bgColor: 'red.500',
+          })
         }
 
         setUserPhoto(selectedPhoto.assets[0].uri)
