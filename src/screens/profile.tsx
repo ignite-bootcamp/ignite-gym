@@ -6,6 +6,7 @@ import {
   Image,
   Input,
   Skeleton,
+  Stack,
   Text,
   VStack,
 } from 'native-base'
@@ -47,23 +48,26 @@ export function Profile() {
             </Text>
           </TouchableOpacity>
 
-          <Input bg="gray.600" placeholder="Nome" />
-          <Input bg="gray.600" placeholder="E-mail" isDisabled />
+          <Stack w="full" space={4}>
+            <Input bg="gray.600" placeholder="Nome" />
+            <Input bg="gray.600" placeholder="E-mail" isDisabled />
+          </Stack>
         </Center>
 
         <VStack px={10} mt={12} mb={9}>
           <Heading color="gray.200" fontSize="md" mb={2}>
             Alterar senha
           </Heading>
-
-          <Input bg="gray.600" placeholder="Senha antiga" secureTextEntry />
-          <Input bg="gray.600" placeholder="Nova senha" secureTextEntry />
-          <Input
-            bg="gray.600"
-            placeholder="Confirme a nova senha"
-            secureTextEntry
-          />
-          <Button mt={4}>Atualizar</Button>
+          <Stack w="full" space={4}>
+            <Input bg="gray.600" placeholder="Senha antiga" secureTextEntry />
+            <Input bg="gray.600" placeholder="Nova senha" secureTextEntry />
+            <Input
+              bg="gray.600"
+              placeholder="Confirme a nova senha"
+              secureTextEntry
+            />
+            <Button mt={4}>Atualizar</Button>
+          </Stack>
         </VStack>
       </ScrollView>
     </VStack>
